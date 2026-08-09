@@ -351,6 +351,9 @@ Base de datos Agyl Agro
 
 # 17. Decisiones ya tomadas
 
+- [x] Framework de frontend: Next.js + TypeScript.
+- [x] Tecnología de backend inicial: Next.js Server Functions / Route Handlers.
+- [x] Motor/base de datos: PostgreSQL mediante Supabase.
 - [x] Aplicación web.
 - [x] Diseño Mobile First.
 - [x] Acceso directo desde pantalla de inicio del teléfono.
@@ -370,9 +373,6 @@ Base de datos Agyl Agro
 
 # 18. Decisiones técnicas pendientes
 
-- [ ] Framework de frontend.
-- [ ] Tecnología de backend.
-- [ ] Motor/base de datos.
 - [ ] Proveedor de SMS.
 - [ ] Sistema de autenticación y sesiones.
 - [ ] Hosting.
