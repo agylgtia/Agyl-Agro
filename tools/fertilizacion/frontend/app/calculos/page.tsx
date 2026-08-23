@@ -4,54 +4,16 @@ import { useRouter } from "next/navigation";
 import BottomNavigation from "../components/BottomNavigation";
 
 const sampleCalculations = [
-  { crop: "Maíz", stage: "Desarrollo", area: "2", unit: "cuerdas" },
-  { crop: "Café", stage: "Floración", area: "1", unit: "manzana" },
-  { crop: "Frijol", stage: "Siembra", area: "3", unit: "cuerdas" },
+  { crop: "Maíz", stage: "Desarrollo", area: "2", unit: "cuerdas", image: "https://images.unsplash.com/photo-1551754655-cd27e38d2076?auto=format&fit=crop&w=320&q=70" },
+  { crop: "Café", stage: "Floración", area: "1", unit: "manzana", image: "https://plus.unsplash.com/premium_photo-1666976504656-75eca1e9aaf5?q=80&w=320&auto=format&fit=crop" },
+  { crop: "Frijol", stage: "Siembra", area: "3", unit: "cuerdas", image: "https://images.unsplash.com/photo-1639947219179-bb0357b8856a?auto=format&fit=crop&w=320&q=70" },
 ];
 
 export default function CalculationsPage() {
   const router = useRouter();
-
-  return (
-    <>
-      <main className="mx-auto min-h-screen w-full max-w-lg bg-[#f5eee0] px-5 pb-32 pt-8 text-[#1f3b2a] sm:px-6">
-      <button
-        type="button"
-        onClick={() => router.push("/resultado")}
-        className="mb-7 text-sm font-semibold text-[#38573f]"
-      >
-        ← Volver
-      </button>
-
-      <header className="mb-8">
-        <p className="mb-3 text-xs font-bold uppercase tracking-[0.22em] text-[#527256]">
-          Agyl Agro
-        </p>
-        <h1 className="text-3xl font-extrabold uppercase leading-tight text-[#163826]">
-          MIS CÁLCULOS
-        </h1>
-      </header>
-
-      <div className="space-y-3">
-        {sampleCalculations.map((item) => (
-          <article
-            key={`${item.crop}-${item.stage}`}
-            className="rounded-2xl bg-white/70 px-5 py-4 shadow-[0_12px_35px_-28px_rgba(31,59,42,0.8)]"
-          >
-            <div className="flex items-center justify-between gap-4">
-              <h2 className="text-lg font-bold text-[#17492d]">{item.crop}</h2>
-              <span className="rounded-full bg-[#e6eed8] px-3 py-1 text-xs font-semibold text-[#527256]">
-                Simulado
-              </span>
-            </div>
-            <p className="mt-2 text-sm text-[#687561]">
-              {item.stage} · {item.area} {item.unit}
-            </p>
-          </article>
-        ))}
-      </div>
-      </main>
-      <BottomNavigation />
-    </>
-  );
+  return <div className="app-shell page-enter min-h-screen text-[var(--ink)]"><main className="screen-main mx-auto min-h-screen w-full max-w-2xl px-5 pb-36 pt-6 sm:px-8 sm:pt-8">
+    <button type="button" onClick={() => router.push("/")} className="flex min-h-12 items-center gap-2 text-sm font-bold text-[var(--ink-soft)] transition hover:text-[var(--lime)]"><span className="text-xl" aria-hidden="true">←</span> Inicio</button>
+    <header className="screen-header mt-7"><p className="text-sm font-bold uppercase tracking-[0.12em] text-[var(--lime)]">Tu actividad</p><h1 className="mt-3 text-3xl font-bold tracking-[-0.03em] sm:text-4xl">Mis cálculos</h1><p className="mt-3 text-base leading-7 text-[var(--ink-soft)]">Consulta tus recomendaciones de demostración.</p></header>
+    <div className="calc-list mt-8 space-y-3">{sampleCalculations.map((item) => <button key={`${item.crop}-${item.stage}`} type="button" onClick={() => router.push(`/resultado?crop=${encodeURIComponent(item.crop)}&stage=${encodeURIComponent(item.stage)}&area=${item.area}&unit=${encodeURIComponent(item.unit)}`)} className="calc-record surface-panel flex min-h-28 w-full items-center gap-4 p-4 text-left transition hover:border-[var(--lime)] active:translate-y-px sm:p-5"><img src={item.image} alt={`Cultivo de ${item.crop}`} className="h-16 w-16 shrink-0 rounded-lg object-cover" /><span className="min-w-0 flex-1"><span className="flex items-center gap-2"><span className="truncate text-lg font-bold text-[var(--ink)]">{item.crop}</span><span className="text-[var(--lime)]" aria-hidden="true">•</span></span><span className="mt-2 block text-sm text-[var(--ink-soft)]">{item.stage} · {item.area} {item.unit}</span><span className="mt-3 block text-xs font-bold uppercase tracking-[0.1em] text-[var(--amber)]">Registro de demostración</span></span><span className="text-xl font-semibold text-[var(--lime)]" aria-hidden="true">→</span></button>)}</div>
+  </main><BottomNavigation /></div>;
 }
