@@ -4,10 +4,16 @@ import { FormEvent, useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import BottomNavigation from "../components/BottomNavigation";
+import {
+  CATEGORIAS_CULTIVOS,
+  obtenerCultivosDeCategoria,
+  obtenerEtapas,
+  obtenerImagenCultivo,
+  type CategoriaId,
+} from "./catalogo-cultivos";
 
-const crops = ["Maíz", "Frijol", "Café", "Tomate"];
-const stages = ["Siembra", "Desarrollo", "Floración", "Fructificación"];
 const units = ["Cuerda", "Manzana", "Hectárea"];
+const TOTAL_PASOS = 4;
 
 // Contenido provisional pendiente de validación agronómica.
 const fieldTips = [
@@ -23,8 +29,9 @@ const fieldTips = [
 export default function FertilizationForm() {
   const router = useRouter();
   const [step, setStep] = useState(1);
-  const [crop, setCrop] = useState(crops[0]);
-  const [stage, setStage] = useState(stages[1]);
+  const [categoria, setCategoria] = useState<CategoriaId | null>(null);
+  const [crop, setCrop] = useState("");
+  const [stage, setStage] = useState("");
   const [area, setArea] = useState("");
   const [unit, setUnit] = useState(units[0]);
   const [processing, setProcessing] = useState(false);
@@ -56,16 +63,42 @@ export default function FertilizationForm() {
     setProcessing(true);
   }
 
+  // Al cambiar de categoría, el cultivo y la etapa previos solo se conservan
+  // si siguen siendo compatibles con la nueva categoría; de lo contrario se
+  // limpian para evitar estados inválidos.
+  function handleCategoriaSelect(nextCategoria: CategoriaId) {
+    setCategoria(nextCategoria);
+    if (!obtenerCultivosDeCategoria(nextCategoria).includes(crop)) {
+      setCrop("");
+      setStage("");
+    } else {
+      const etapasValidas = obtenerEtapas(crop);
+      setStage((etapaActual) => (etapasValidas.includes(etapaActual) ? etapaActual : etapasValidas[0]));
+    }
+    setStep(2);
+  }
+
+  // Al cambiar de cultivo, la etapa previa solo se conserva si sigue siendo
+  // válida para el nuevo cultivo; de lo contrario se reinicia a su primera etapa.
+  function handleCropSelect(nextCrop: string) {
+    setCrop(nextCrop);
+    const etapasValidas = obtenerEtapas(nextCrop);
+    setStage((etapaActual) => (etapasValidas.includes(etapaActual) ? etapaActual : etapasValidas[0]));
+  }
+
   if (processing) return <ProcessingScreen tip={tip} phase={processingPhase} />;
+
+  const nombreCategoria = CATEGORIAS_CULTIVOS.find((item) => item.id === categoria)?.nombre ?? "";
 
   return (<><div className={`app-shell flow-screen min-h-screen text-[var(--ink)] ${step === 1 ? "isolation-screen" : "page-enter"}`}><main className="flow-main mx-auto w-full max-w-2xl px-5 pt-6 sm:px-8 sm:pt-8">
     {step === 1 ? <Link href="/" className="flow-back flex min-h-12 items-center gap-2 text-sm font-bold text-[var(--ink-soft)]"><span className="text-xl" aria-hidden="true">←</span> Inicio</Link> : <button type="button" onClick={() => setStep(step - 1)} className="flow-back flex min-h-12 items-center gap-2 text-sm font-bold text-[var(--ink-soft)] transition hover:text-[var(--lime)]"><span className="text-xl" aria-hidden="true">←</span> Paso anterior</button>}
-    <header className="flow-header mt-7"><div className="flex items-center justify-between text-sm font-semibold text-[var(--ink-soft)]"><span>Nuevo cálculo</span><span>Paso {step} de 3</span></div><div className="mt-3 flex gap-2" aria-label={`Paso ${step} de 3`}>{[1, 2, 3].map((item) => <span key={item} className={`h-1.5 flex-1 rounded-full ${item <= step ? "progress-active" : "bg-[var(--line)]"}`} />)}</div></header>
+    <header className="flow-header mt-7"><div className="flex items-center justify-between text-sm font-semibold text-[var(--ink-soft)]"><span>Nuevo cálculo</span><span>Paso {step} de {TOTAL_PASOS}</span></div><div className="mt-3 flex gap-2" aria-label={`Paso ${step} de ${TOTAL_PASOS}`}>{Array.from({ length: TOTAL_PASOS }, (_, index) => index + 1).map((item) => <span key={item} className={`h-1.5 flex-1 rounded-full ${item <= step ? "progress-active" : "bg-[var(--line)]"}`} />)}</div></header>
     <form onSubmit={handleSubmit} className="flow-form mt-12">
-      {step === 1 && <section><h1 className="text-3xl font-bold leading-tight text-[var(--ink)]">¿Qué cultivo vas a fertilizar?</h1><div className="mt-8 grid gap-3">{crops.map((option) => { const selected = crop === option; return <button key={option} type="button" aria-pressed={selected} onClick={() => setCrop(option)} className={`min-h-14 w-full touch-manipulation rounded-[10px] border px-4 text-left text-base font-semibold transition ${selected ? "border-[var(--lime)] bg-[var(--lime-soft)] text-[var(--ink)]" : "border-[var(--line)] bg-[var(--surface-raised)] text-[var(--ink)]"}`}>{option}</button>; })}</div></section>}
-      {step === 2 && <div className="step-enter"><StepContent title="¿En qué etapa está el cultivo?" description="Toca el momento actual del cultivo."><ChoiceGroup label="Etapa del cultivo" options={stages} value={stage} onChange={setStage} /></StepContent></div>}
-      {step === 3 && <div className="step-enter"><StepContent title="¿Cuánta área tienes sembrada?" description="Indica el área sobre la que vas a aplicar el fertilizante."><div className="grid gap-5 sm:grid-cols-2"><Field label="Área sembrada"><input type="number" min="0.1" step="any" inputMode="decimal" value={area} onChange={(event) => setArea(event.target.value)} className="form-control" placeholder="Ej. 2" required /></Field><Field label="Unidad"><select value={unit} onChange={(event) => setUnit(event.target.value)} className="form-control" required>{units.map((option) => <option key={option}>{option}</option>)}</select></Field></div></StepContent></div>}
-      {step < 3 ? <button type="button" onClick={() => setStep(step + 1)} className="flow-action primary-button mt-12 w-full px-6 text-base">Continuar <span className="ml-2" aria-hidden="true">→</span></button> : <button type="submit" className="flow-action primary-button mt-12 w-full px-6 text-base">Calcular recomendación <span className="ml-2" aria-hidden="true">→</span></button>}
+      {step === 1 && <section><h1 className="text-3xl font-bold leading-tight text-[var(--ink)]">¿Qué tipo de cultivo tienes?</h1><p className="mt-4 max-w-lg text-base leading-7 text-[var(--ink-soft)]">Elige una categoría para encontrar tu cultivo más rápido.</p><div className="crop-choice-grid mt-8">{CATEGORIAS_CULTIVOS.map((opcion) => { const selected = categoria === opcion.id; return <button key={opcion.id} type="button" aria-pressed={selected} onClick={() => handleCategoriaSelect(opcion.id)} className={`crop-card ${selected ? "crop-card-selected" : ""}`}><img src={opcion.imagen} alt={`Cultivo de ${opcion.nombre.toLowerCase()}`} /><span className="crop-card-label"><span>{opcion.nombre}</span><span className="crop-card-check" aria-hidden="true">{selected ? "✓" : ""}</span></span></button>; })}</div></section>}
+      {step === 2 && categoria && <div className="step-enter"><section><h1 className="text-3xl font-bold leading-tight text-[var(--ink)]">Selecciona tu cultivo</h1><p className="mt-4 max-w-lg text-base leading-7 text-[var(--ink-soft)]">Categoría: {nombreCategoria}. Toca el cultivo que vas a fertilizar.</p><div className="crop-choice-grid mt-8">{obtenerCultivosDeCategoria(categoria).map((option) => { const selected = crop === option; return <button key={option} type="button" aria-pressed={selected} onClick={() => handleCropSelect(option)} className={`crop-card ${selected ? "crop-card-selected" : ""}`}><img src={obtenerImagenCultivo(option)} alt={`Cultivo de ${option.toLowerCase()}`} loading="lazy" /><span className="crop-card-label"><span>{option}</span><span className="crop-card-check" aria-hidden="true">{selected ? "✓" : ""}</span></span></button>; })}</div></section></div>}
+      {step === 3 && <div className="step-enter"><StepContent title="¿En qué etapa está el cultivo?" description="Toca el momento actual del cultivo."><ChoiceGroup label="Etapa del cultivo" options={obtenerEtapas(crop)} value={stage} onChange={setStage} /></StepContent></div>}
+      {step === 4 && <div className="step-enter"><StepContent title="¿Cuánta área tienes sembrada?" description="Indica el área sobre la que vas a aplicar el fertilizante."><div className="grid gap-5 sm:grid-cols-2"><Field label="Área sembrada"><input type="number" min="0.1" step="any" inputMode="decimal" value={area} onChange={(event) => setArea(event.target.value)} className="form-control" placeholder="Ej. 2" required /></Field><Field label="Unidad"><select value={unit} onChange={(event) => setUnit(event.target.value)} className="form-control" required>{units.map((option) => <option key={option}>{option}</option>)}</select></Field></div></StepContent></div>}
+      {step === TOTAL_PASOS ? <button type="submit" className="flow-action primary-button mt-12 w-full px-6 text-base">Calcular recomendación <span className="ml-2" aria-hidden="true">→</span></button> : step > 1 ? <button type="button" onClick={() => setStep(step + 1)} disabled={!crop} className="flow-action primary-button mt-12 w-full px-6 text-base">Continuar <span className="ml-2" aria-hidden="true">→</span></button> : null}
     </form>
   </main></div>{step !== 1 && <BottomNavigation />}</>);
 }
@@ -73,7 +106,7 @@ export default function FertilizationForm() {
 function StepContent({ title, description, children }: { title: string; description: string; children: React.ReactNode }) { return <section><h1 className="flow-title max-w-xl text-3xl font-bold leading-tight tracking-[-0.03em] text-[var(--ink)] sm:text-4xl">{title}</h1><p className="flow-description mt-4 max-w-lg text-base leading-7 text-[var(--ink-soft)]">{description}</p><div className="flow-step-panel surface-panel mt-9 p-5 sm:p-6">{children}</div></section>; }
 function Field({ label, children }: { label: string; children: React.ReactNode }) { return <label className="block text-sm font-semibold text-[var(--ink)]"><span className="mb-2 block">{label}</span>{children}</label>; }
 
-function ChoiceGroup({ label, options, value, onChange }: { label: string; options: string[]; value: string; onChange: (value: string) => void }) { return <fieldset><legend className="mb-3 text-sm font-semibold text-[var(--ink)]">{label}</legend><div className="choice-grid">{options.map((option) => { const selected = value === option; return <button key={option} type="button" aria-pressed={selected} onClick={() => onChange(option)} className={`choice-card ${selected ? "choice-card-selected" : ""}`}><span className="font-semibold">{option}</span><span className="choice-check" aria-hidden="true">{selected ? "✓" : ""}</span></button>; })}</div></fieldset>; }
+function ChoiceGroup({ label, options, value, onChange }: { label: string; options: readonly string[]; value: string; onChange: (value: string) => void }) { return <fieldset><legend className="mb-3 text-sm font-semibold text-[var(--ink)]">{label}</legend><div className="choice-grid">{options.map((option) => { const selected = value === option; return <button key={option} type="button" aria-pressed={selected} onClick={() => onChange(option)} className={`choice-card ${selected ? "choice-card-selected" : ""}`}><span className="font-semibold">{option}</span><span className="choice-check" aria-hidden="true">{selected ? "✓" : ""}</span></button>; })}</div></fieldset>; }
 
 function ProcessingScreen({ tip, phase }: { tip: string; phase: "blank" | "tip" | "tip-leave" | "calculating" | "ready" }) {
   const showingTip = phase === "tip" || phase === "tip-leave";
