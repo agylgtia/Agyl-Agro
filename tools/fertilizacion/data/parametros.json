@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "unidad_superficie": "cuerda",
+  "metros_por_lado_cuerda": 20,
+  "metros_cuadrados_por_cuerda": 400,
+  "formula_base": "cantidad_total = numero_cuerdas * dosis_por_cuerda",
+  "usa_hectareas": false,
+  "relaciones": {
+    "ÚNICO": "Un solo producto o manejo.",
+    "CONJUNTO": "Componentes complementarios; calcular cada componente por separado. No asumir mezcla física.",
+    "ALTERNATIVA": "Elegir una alternativa; no sumar dosis.",
+    "MIXTA": "Contiene alternativas y componentes complementarios; conservar la estructura original.",
+    "MANEJO": "Labor cultural o mecánica; no calcular químico salvo cantidad de material explícita."
+  }
+}

@@ -1,0 +1,132 @@
+[
+  {
+    "tipo": "Fertilizante",
+    "producto": "10-50-0",
+    "motivo": "Sin coincidencia",
+    "numero_usos": 1,
+    "cultivos": "Frijol",
+    "etapas": "Siembra / Emergencia",
+    "texto_original": "10-50-0 o 12-24-12 + Micoorganismos fijadores (Rhizobium)",
+    "accion": "Completar/validar en catálogo antes de usar en cálculo"
+  },
+  {
+    "tipo": "Fertilizante",
+    "producto": "18-5-15",
+    "motivo": "Sin coincidencia",
+    "numero_usos": 1,
+    "cultivos": "Aguacate",
+    "etapas": "Floración / Desarrollo",
+    "texto_original": "18-5-15 + Boro + Zinc",
+    "accion": "Completar/validar en catálogo antes de usar en cálculo"
+  },
+  {
+    "tipo": "Fertilizante",
+    "producto": "Calcio",
+    "motivo": "Sin coincidencia",
+    "numero_usos": 4,
+    "cultivos": "Chile / Pimiento, Maní, Pepino, Tomate",
+    "etapas": "Floración / Desarrollo, Fructificación / Cosecha",
+    "texto_original": "0-18-36 + Calcio + Boro | 10-20-20 + Calcio + Boro | 12-24-12 + Boro + Calcio | Nitrato de potasio + Calcio",
+    "accion": "Completar/validar en catálogo antes de usar en cálculo"
+  },
+  {
+    "tipo": "Fertilizante",
+    "producto": "Fosfato diamónico",
+    "motivo": "Revisar fórmula 16-20-0",
+    "numero_usos": 1,
+    "cultivos": "Naranja",
+    "etapas": "Siembra / Crecimiento",
+    "texto_original": "Urea + Fosfato diamónico (16-20-0)",
+    "accion": "Completar/validar en catálogo antes de usar en cálculo"
+  },
+  {
+    "tipo": "Fertilizante",
+    "producto": "Micoorganismos fijadores (Rhizobium)",
+    "motivo": "Sin coincidencia",
+    "numero_usos": 1,
+    "cultivos": "Frijol",
+    "etapas": "Siembra / Emergencia",
+    "texto_original": "10-50-0 o 12-24-12 + Micoorganismos fijadores (Rhizobium)",
+    "accion": "Completar/validar en catálogo antes de usar en cálculo"
+  },
+  {
+    "tipo": "Fertilizante",
+    "producto": "Potasio",
+    "motivo": "Sin coincidencia",
+    "numero_usos": 1,
+    "cultivos": "Café",
+    "etapas": "Fructificación / Cosecha",
+    "texto_original": "Sulfato de amonio + Potasio",
+    "accion": "Completar/validar en catálogo antes de usar en cálculo"
+  },
+  {
+    "tipo": "Herbicida",
+    "producto": "Control manual",
+    "motivo": "Sin coincidencia",
+    "numero_usos": 1,
+    "cultivos": "Frijol",
+    "etapas": "Llenado de vaina / Cosecha",
+    "texto_original": "Desecantes de pre-cosecha (si aplica) / Control manual",
+    "accion": "Completar/validar en catálogo antes de usar en cálculo"
+  },
+  {
+    "tipo": "Herbicida",
+    "producto": "Desecantes de pre-cosecha (si aplica)",
+    "motivo": "Sin coincidencia",
+    "numero_usos": 1,
+    "cultivos": "Frijol",
+    "etapas": "Llenado de vaina / Cosecha",
+    "texto_original": "Desecantes de pre-cosecha (si aplica) / Control manual",
+    "accion": "Completar/validar en catálogo antes de usar en cálculo"
+  },
+  {
+    "tipo": "Herbicida",
+    "producto": "Fomesafen",
+    "motivo": "Sin coincidencia",
+    "numero_usos": 1,
+    "cultivos": "Frijol",
+    "etapas": "Vegetativo / Floración",
+    "texto_original": "Fomesafen / Quizalofop-p-etilo (post-emergencia)",
+    "accion": "Completar/validar en catálogo antes de usar en cálculo"
+  },
+  {
+    "tipo": "Herbicida",
+    "producto": "Quizalofop-p-etilo (post-emergencia)",
+    "motivo": "Sin coincidencia",
+    "numero_usos": 1,
+    "cultivos": "Frijol",
+    "etapas": "Vegetativo / Floración",
+    "texto_original": "Fomesafen / Quizalofop-p-etilo (post-emergencia)",
+    "accion": "Completar/validar en catálogo antes de usar en cálculo"
+  },
+  {
+    "tipo": "Herbicida",
+    "producto": "S-metolacloro (pre-emergencia)",
+    "motivo": "Sin coincidencia",
+    "numero_usos": 1,
+    "cultivos": "Frijol",
+    "etapas": "Siembra / Emergencia",
+    "texto_original": "Pendimetalina / S-metolacloro (pre-emergencia)",
+    "accion": "Completar/validar en catálogo antes de usar en cálculo"
+  },
+  {
+    "tipo": "Herbicida",
+    "producto": "cubierta vegetal",
+    "motivo": "Sin coincidencia",
+    "numero_usos": 1,
+    "cultivos": "Limón",
+    "etapas": "Floración / Desarrollo",
+    "texto_original": "Glifosato + cubierta vegetal",
+    "accion": "Completar/validar en catálogo antes de usar en cálculo"
+  },
+  {
+    "tipo": "Herbicida",
+    "producto": "limpieza manual",
+    "motivo": "Sin coincidencia",
+    "numero_usos": 1,
+    "cultivos": "Aguacate",
+    "etapas": "Floración / Desarrollo",
+    "texto_original": "Acolchado / limpieza manual",
+    "accion": "Completar/validar en catálogo antes de usar en cálculo"
+  }
+]

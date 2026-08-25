@@ -1,0 +1,368 @@
+[
+  {
+    "id": "etapa-limon-1",
+    "cultivo_id": "cult-limon",
+    "nombre": "Siembra / Crecimiento",
+    "orden": 1
+  },
+  {
+    "id": "etapa-limon-2",
+    "cultivo_id": "cult-limon",
+    "nombre": "Floración / Desarrollo",
+    "orden": 2
+  },
+  {
+    "id": "etapa-limon-3",
+    "cultivo_id": "cult-limon",
+    "nombre": "Fructificación / Cosecha",
+    "orden": 3
+  },
+  {
+    "id": "etapa-naranja-1",
+    "cultivo_id": "cult-naranja",
+    "nombre": "Siembra / Crecimiento",
+    "orden": 1
+  },
+  {
+    "id": "etapa-naranja-2",
+    "cultivo_id": "cult-naranja",
+    "nombre": "Floración / Desarrollo",
+    "orden": 2
+  },
+  {
+    "id": "etapa-naranja-3",
+    "cultivo_id": "cult-naranja",
+    "nombre": "Fructificación / Cosecha",
+    "orden": 3
+  },
+  {
+    "id": "etapa-mandarina-1",
+    "cultivo_id": "cult-mandarina",
+    "nombre": "Siembra / Crecimiento",
+    "orden": 1
+  },
+  {
+    "id": "etapa-mandarina-2",
+    "cultivo_id": "cult-mandarina",
+    "nombre": "Floración / Desarrollo",
+    "orden": 2
+  },
+  {
+    "id": "etapa-mandarina-3",
+    "cultivo_id": "cult-mandarina",
+    "nombre": "Fructificación / Cosecha",
+    "orden": 3
+  },
+  {
+    "id": "etapa-durazno-melocoton-1",
+    "cultivo_id": "cult-durazno-melocoton",
+    "nombre": "Siembra / Crecimiento",
+    "orden": 1
+  },
+  {
+    "id": "etapa-durazno-melocoton-2",
+    "cultivo_id": "cult-durazno-melocoton",
+    "nombre": "Floración / Desarrollo",
+    "orden": 2
+  },
+  {
+    "id": "etapa-durazno-melocoton-3",
+    "cultivo_id": "cult-durazno-melocoton",
+    "nombre": "Fructificación / Cosecha",
+    "orden": 3
+  },
+  {
+    "id": "etapa-ciruela-1",
+    "cultivo_id": "cult-ciruela",
+    "nombre": "Siembra / Crecimiento",
+    "orden": 1
+  },
+  {
+    "id": "etapa-ciruela-2",
+    "cultivo_id": "cult-ciruela",
+    "nombre": "Floración / Desarrollo",
+    "orden": 2
+  },
+  {
+    "id": "etapa-ciruela-3",
+    "cultivo_id": "cult-ciruela",
+    "nombre": "Fructificación / Cosecha",
+    "orden": 3
+  },
+  {
+    "id": "etapa-manzana-1",
+    "cultivo_id": "cult-manzana",
+    "nombre": "Siembra / Crecimiento",
+    "orden": 1
+  },
+  {
+    "id": "etapa-manzana-2",
+    "cultivo_id": "cult-manzana",
+    "nombre": "Floración / Desarrollo",
+    "orden": 2
+  },
+  {
+    "id": "etapa-manzana-3",
+    "cultivo_id": "cult-manzana",
+    "nombre": "Fructificación / Cosecha",
+    "orden": 3
+  },
+  {
+    "id": "etapa-aguacate-1",
+    "cultivo_id": "cult-aguacate",
+    "nombre": "Siembra / Crecimiento",
+    "orden": 1
+  },
+  {
+    "id": "etapa-aguacate-2",
+    "cultivo_id": "cult-aguacate",
+    "nombre": "Floración / Desarrollo",
+    "orden": 2
+  },
+  {
+    "id": "etapa-aguacate-3",
+    "cultivo_id": "cult-aguacate",
+    "nombre": "Fructificación / Cosecha",
+    "orden": 3
+  },
+  {
+    "id": "etapa-cafe-1",
+    "cultivo_id": "cult-cafe",
+    "nombre": "Siembra / Crecimiento",
+    "orden": 1
+  },
+  {
+    "id": "etapa-cafe-2",
+    "cultivo_id": "cult-cafe",
+    "nombre": "Floración / Desarrollo",
+    "orden": 2
+  },
+  {
+    "id": "etapa-cafe-3",
+    "cultivo_id": "cult-cafe",
+    "nombre": "Fructificación / Cosecha",
+    "orden": 3
+  },
+  {
+    "id": "etapa-remolacha-1",
+    "cultivo_id": "cult-remolacha",
+    "nombre": "Siembra / Crecimiento",
+    "orden": 1
+  },
+  {
+    "id": "etapa-remolacha-2",
+    "cultivo_id": "cult-remolacha",
+    "nombre": "Fructificación / Cosecha",
+    "orden": 2
+  },
+  {
+    "id": "etapa-zanahoria-1",
+    "cultivo_id": "cult-zanahoria",
+    "nombre": "Siembra / Crecimiento",
+    "orden": 1
+  },
+  {
+    "id": "etapa-zanahoria-2",
+    "cultivo_id": "cult-zanahoria",
+    "nombre": "Fructificación / Cosecha",
+    "orden": 2
+  },
+  {
+    "id": "etapa-papa-1",
+    "cultivo_id": "cult-papa",
+    "nombre": "Siembra / Crecimiento",
+    "orden": 1
+  },
+  {
+    "id": "etapa-papa-2",
+    "cultivo_id": "cult-papa",
+    "nombre": "Floración / Desarrollo",
+    "orden": 2
+  },
+  {
+    "id": "etapa-papa-3",
+    "cultivo_id": "cult-papa",
+    "nombre": "Fructificación / Cosecha",
+    "orden": 3
+  },
+  {
+    "id": "etapa-rabano-1",
+    "cultivo_id": "cult-rabano",
+    "nombre": "Siembra / Crecimiento",
+    "orden": 1
+  },
+  {
+    "id": "etapa-rabano-2",
+    "cultivo_id": "cult-rabano",
+    "nombre": "Desarrollo",
+    "orden": 2
+  },
+  {
+    "id": "etapa-rabano-3",
+    "cultivo_id": "cult-rabano",
+    "nombre": "Fructificación / Cosecha",
+    "orden": 3
+  },
+  {
+    "id": "etapa-tomate-1",
+    "cultivo_id": "cult-tomate",
+    "nombre": "Siembra / Crecimiento",
+    "orden": 1
+  },
+  {
+    "id": "etapa-tomate-2",
+    "cultivo_id": "cult-tomate",
+    "nombre": "Floración / Desarrollo",
+    "orden": 2
+  },
+  {
+    "id": "etapa-tomate-3",
+    "cultivo_id": "cult-tomate",
+    "nombre": "Fructificación / Cosecha",
+    "orden": 3
+  },
+  {
+    "id": "etapa-chile-pimiento-1",
+    "cultivo_id": "cult-chile-pimiento",
+    "nombre": "Siembra / Crecimiento",
+    "orden": 1
+  },
+  {
+    "id": "etapa-chile-pimiento-2",
+    "cultivo_id": "cult-chile-pimiento",
+    "nombre": "Floración / Desarrollo",
+    "orden": 2
+  },
+  {
+    "id": "etapa-chile-pimiento-3",
+    "cultivo_id": "cult-chile-pimiento",
+    "nombre": "Fructificación / Cosecha",
+    "orden": 3
+  },
+  {
+    "id": "etapa-pepino-1",
+    "cultivo_id": "cult-pepino",
+    "nombre": "Siembra / Crecimiento",
+    "orden": 1
+  },
+  {
+    "id": "etapa-pepino-2",
+    "cultivo_id": "cult-pepino",
+    "nombre": "Floración / Desarrollo",
+    "orden": 2
+  },
+  {
+    "id": "etapa-pepino-3",
+    "cultivo_id": "cult-pepino",
+    "nombre": "Fructificación / Cosecha",
+    "orden": 3
+  },
+  {
+    "id": "etapa-ayote-calabaza-1",
+    "cultivo_id": "cult-ayote-calabaza",
+    "nombre": "Siembra / Crecimiento",
+    "orden": 1
+  },
+  {
+    "id": "etapa-ayote-calabaza-2",
+    "cultivo_id": "cult-ayote-calabaza",
+    "nombre": "Floración / Desarrollo",
+    "orden": 2
+  },
+  {
+    "id": "etapa-ayote-calabaza-3",
+    "cultivo_id": "cult-ayote-calabaza",
+    "nombre": "Fructificación / Cosecha",
+    "orden": 3
+  },
+  {
+    "id": "etapa-chipilin-1",
+    "cultivo_id": "cult-chipilin",
+    "nombre": "Siembra / Crecimiento",
+    "orden": 1
+  },
+  {
+    "id": "etapa-chipilin-2",
+    "cultivo_id": "cult-chipilin",
+    "nombre": "Floración / Desarrollo",
+    "orden": 2
+  },
+  {
+    "id": "etapa-chipilin-3",
+    "cultivo_id": "cult-chipilin",
+    "nombre": "Fructificación / Cosecha",
+    "orden": 3
+  },
+  {
+    "id": "etapa-hierbas-aromaticas-culinarias-1",
+    "cultivo_id": "cult-hierbas-aromaticas-culinarias",
+    "nombre": "Siembra / Crecimiento",
+    "orden": 1
+  },
+  {
+    "id": "etapa-hierbas-aromaticas-culinarias-2",
+    "cultivo_id": "cult-hierbas-aromaticas-culinarias",
+    "nombre": "Floración / Desarrollo",
+    "orden": 2
+  },
+  {
+    "id": "etapa-hierbas-aromaticas-culinarias-3",
+    "cultivo_id": "cult-hierbas-aromaticas-culinarias",
+    "nombre": "Fructificación / Cosecha",
+    "orden": 3
+  },
+  {
+    "id": "etapa-frijol-1",
+    "cultivo_id": "cult-frijol",
+    "nombre": "Siembra / Emergencia",
+    "orden": 1
+  },
+  {
+    "id": "etapa-frijol-2",
+    "cultivo_id": "cult-frijol",
+    "nombre": "Vegetativo / Floración",
+    "orden": 2
+  },
+  {
+    "id": "etapa-frijol-3",
+    "cultivo_id": "cult-frijol",
+    "nombre": "Llenado de vaina / Cosecha",
+    "orden": 3
+  },
+  {
+    "id": "etapa-maiz-1",
+    "cultivo_id": "cult-maiz",
+    "nombre": "Siembra / Crecimiento",
+    "orden": 1
+  },
+  {
+    "id": "etapa-maiz-2",
+    "cultivo_id": "cult-maiz",
+    "nombre": "Floración / Desarrollo",
+    "orden": 2
+  },
+  {
+    "id": "etapa-maiz-3",
+    "cultivo_id": "cult-maiz",
+    "nombre": "Fructificación / Cosecha",
+    "orden": 3
+  },
+  {
+    "id": "etapa-mani-1",
+    "cultivo_id": "cult-mani",
+    "nombre": "Siembra / Crecimiento",
+    "orden": 1
+  },
+  {
+    "id": "etapa-mani-2",
+    "cultivo_id": "cult-mani",
+    "nombre": "Floración / Desarrollo",
+    "orden": 2
+  },
+  {
+    "id": "etapa-mani-3",
+    "cultivo_id": "cult-mani",
+    "nombre": "Fructificación / Cosecha",
+    "orden": 3
+  }
+]
