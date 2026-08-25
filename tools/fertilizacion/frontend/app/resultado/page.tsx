@@ -5,6 +5,40 @@ import { useSearchParams, useRouter } from "next/navigation";
 import BottomNavigation from "../components/BottomNavigation";
 import recomendacionesData from "../../data/recomendaciones.json";
 
+// Tipos derivados del propio JSON: no se modifica la estructura de datos,
+// solo se describe para poder tipar la capa de presentación.
+type Recomendacion = (typeof recomendacionesData)[number];
+type ItemRecomendacion = Recomendacion["items"][number];
+type ItemCalculado = ItemRecomendacion & {
+  cantidadMinima: number | null;
+  cantidadMaxima: number | null;
+};
+type RecomendacionCalculada = Omit<Recomendacion, "items"> & {
+  items: ItemCalculado[];
+};
+
+// Nombres visibles para el productor (las palabras internas de la base
+// de datos como "Fertilizante" o "ALTERNATIVA" nunca se muestran tal cual).
+const TIPO_LABELS: Record<string, string> = {
+  Fertilizante: "Fertilización",
+  Insecticida: "Control de insectos",
+  Herbicida: "Control de malezas",
+};
+
+const TIPO_ORDEN: Record<string, number> = {
+  Fertilizante: 0,
+  Insecticida: 1,
+  Herbicida: 2,
+};
+
+const RELACION_LABELS: Record<string, string> = {
+  "ÚNICO": "Recomendado",
+  CONJUNTO: "Usar en conjunto",
+  ALTERNATIVA: "Elegí una opción",
+  MIXTA: "Recomendación combinada",
+  MANEJO: "Manejo del cultivo",
+};
+
 export default function ResultPage() { return <Suspense fallback={<main className="min-h-screen bg-[#050706]" />}><ResultContent /></Suspense>; }
 
 function ResultContent() {
