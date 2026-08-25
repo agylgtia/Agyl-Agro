@@ -8,62 +8,33 @@
  * etapas existente o definiendo uno nuevo.
  */
 
+import cultivosData from "../../data/cultivos.json";
+import etapasData from "../../data/etapas.json";
+
 export interface CultivoEtapas {
   readonly nombre: string;
   readonly etapas: readonly string[];
 }
 
-/** Etapas estándar compartidas por la mayoría de los cultivos. */
-const ETAPAS_ESTANDAR: readonly string[] = [
-  "Siembra / Crecimiento",
-  "Floración / Desarrollo",
-  "Fructificación / Cosecha",
-];
+interface CultivoData {
+  readonly id: string;
+  readonly nombre: string;
+}
 
-/** Etapas para cultivos de raíz sin etapa de floración diferenciada. */
-const ETAPAS_RAIZ: readonly string[] = [
-  "Siembra / Crecimiento",
-  "Fructificación / Cosecha",
-];
+interface EtapaData {
+  readonly cultivo_id: string;
+  readonly nombre: string;
+  readonly orden: number;
+}
 
-/** Etapas propias del rábano, con "Desarrollo" como etapa independiente. */
-const ETAPAS_RABANO: readonly string[] = [
-  "Siembra / Crecimiento",
-  "Desarrollo",
-  "Fructificación / Cosecha",
-];
-
-/** Etapas propias de leguminosas como el frijol. */
-const ETAPAS_FRIJOL: readonly string[] = [
-  "Siembra / Emergencia",
-  "Vegetativo / Floración",
-  "Llenado de vaina / Cosecha",
-];
-
-/** Catálogo completo de cultivos soportados, en orden de presentación. */
-export const CATALOGO_CULTIVOS: readonly CultivoEtapas[] = [
-  { nombre: "Limón", etapas: ETAPAS_ESTANDAR },
-  { nombre: "Naranja", etapas: ETAPAS_ESTANDAR },
-  { nombre: "Mandarina", etapas: ETAPAS_ESTANDAR },
-  { nombre: "Durazno / Melocotón", etapas: ETAPAS_ESTANDAR },
-  { nombre: "Ciruela", etapas: ETAPAS_ESTANDAR },
-  { nombre: "Manzana", etapas: ETAPAS_ESTANDAR },
-  { nombre: "Aguacate", etapas: ETAPAS_ESTANDAR },
-  { nombre: "Café", etapas: ETAPAS_ESTANDAR },
-  { nombre: "Remolacha", etapas: ETAPAS_RAIZ },
-  { nombre: "Zanahoria", etapas: ETAPAS_RAIZ },
-  { nombre: "Papa", etapas: ETAPAS_ESTANDAR },
-  { nombre: "Rábano", etapas: ETAPAS_RABANO },
-  { nombre: "Tomate", etapas: ETAPAS_ESTANDAR },
-  { nombre: "Chile / Pimiento", etapas: ETAPAS_ESTANDAR },
-  { nombre: "Pepino", etapas: ETAPAS_ESTANDAR },
-  { nombre: "Ayote / Calabaza", etapas: ETAPAS_ESTANDAR },
-  { nombre: "Chipilín", etapas: ETAPAS_ESTANDAR },
-  { nombre: "Hierbas aromáticas / culinarias", etapas: ETAPAS_ESTANDAR },
-  { nombre: "Frijol", etapas: ETAPAS_FRIJOL },
-  { nombre: "Maíz", etapas: ETAPAS_ESTANDAR },
-  { nombre: "Maní", etapas: ETAPAS_ESTANDAR },
-];
+export const CATALOGO_CULTIVOS: readonly CultivoEtapas[] =
+  (cultivosData as CultivoData[]).map((cultivo) => ({
+    nombre: cultivo.nombre,
+    etapas: (etapasData as EtapaData[])
+      .filter((etapa) => etapa.cultivo_id === cultivo.id)
+      .sort((a, b) => a.orden - b.orden)
+      .map((etapa) => etapa.nombre),
+  }));
 
 /** Nombres de todos los cultivos disponibles, en orden de presentación. */
 export function obtenerCultivos(): readonly string[] {
