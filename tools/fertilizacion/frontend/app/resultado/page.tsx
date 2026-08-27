@@ -71,7 +71,7 @@ const recomendacionesCalculadas = recomendaciones.map((recomendacion) => ({
 }));
 
 
-  return <div className="app-shell page-enter min-h-screen text-[var(--ink)]"><main className="screen-main mx-auto min-h-screen w-full max-w-2xl px-5 pb-36 pt-6 sm:px-8 sm:pt-8">
+  return <div className="app-shell result-scroll page-enter min-h-screen text-[var(--ink)]"><main className="screen-main result-scroll mx-auto min-h-screen w-full max-w-2xl px-5 pb-36 pt-6 sm:px-8 sm:pt-8">
     <button type="button" onClick={() => router.push(`/formulario?crop=${encodeURIComponent(crop)}&stage=${encodeURIComponent(stage)}&area=${encodeURIComponent(area)}`)} className="flex min-h-12 items-center gap-2 text-sm font-bold text-[var(--ink-soft)] transition hover:text-[var(--lime)]"><span className="text-xl" aria-hidden="true">←</span> Corregir datos</button>
     <header className="screen-header mt-7 result-stagger"><p className="text-sm font-bold uppercase tracking-[0.12em] text-[var(--lime)]">Resultado</p><h1 className="mt-3 text-3xl font-bold tracking-[-0.03em] sm:text-4xl">Tu recomendación</h1></header>
     <section className="result-context surface-panel result-stagger result-stagger-3 mt-6 p-5 sm:p-6"><h2 className="text-base font-bold text-[var(--ink)]">Contexto del cálculo</h2><dl className="mt-5 grid gap-4 sm:grid-cols-3"><SummaryItem label="Cultivo" value={crop} /><SummaryItem label="Etapa" value={stage} /><SummaryItem label="Área" value={`${area} ${Number(area) === 1 ? "cuerda" : "cuerdas"}`} /></dl></section>

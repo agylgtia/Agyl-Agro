@@ -33,6 +33,7 @@ button, a, select, input { touch-action: manipulation; }
 button:focus-visible, a:focus-visible, select:focus-visible, input:focus-visible { outline: 3px solid var(--lime); outline-offset: 3px; }
 
 .app-shell { min-height: 100dvh; overflow: hidden; background: radial-gradient(circle at 95% 0%, rgba(18, 61, 40, 0.38), transparent 28rem), var(--background); }
+.app-shell.result-scroll { overflow: visible; }
 .isolation-screen { background: #000; }
 .agro-grid { background-image: linear-gradient(125deg, transparent 0 48%, rgba(168, 255, 34, 0.12) 49% 50%, transparent 51%), linear-gradient(35deg, transparent 0 48%, rgba(246, 247, 244, 0.07) 49% 50%, transparent 51%); background-size: 44px 44px; }
 .page-enter { animation: page-enter 280ms ease-out both; }
@@ -140,6 +141,7 @@ button:focus-visible, a:focus-visible, select:focus-visible, input:focus-visible
 @media (max-height: 850px) and (max-width: 600px) {
   .home-screen { height: 100dvh; overflow: hidden; }
   .screen-main { height: 100dvh; min-height: 0 !important; overflow: hidden; padding-top: 12px !important; padding-bottom: 88px !important; }
+  .screen-main.result-scroll { height: auto; min-height: 100dvh !important; overflow: visible; padding-bottom: 128px !important; }
   .screen-main .screen-header { margin-top: 12px !important; }
   .screen-main .result-demo { margin-top: 12px !important; padding: 10px 12px !important; }
   .screen-main .result-card { margin-top: 10px !important; }
